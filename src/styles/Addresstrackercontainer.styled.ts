@@ -9,7 +9,8 @@ export const StyledAddressTrackerContainer = styled.div`
     position: relative;
     background-color: #fff;
     top: -5rem;
-    margin: 0 10rem;
+    width: 80vw;
+    margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);  
     border-radius: 0.7rem;
      
@@ -22,13 +23,25 @@ export const StyledAddressTrackerContainer = styled.div`
         display: flex;
 
     }
-
+    
+ 
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        gap:  1rem;
+        padding: 1.5rem 0;
+       
+    }
 `
 export const Divider = styled.div`
      height: 4rem;
      width: 1px;
      background-color: lightgray;
      
+        /* MEDIA QUERIES */
+    @media screen and (max-width: 768px) { 
+        display: none;
+    }
 `
 
 export const AdrressTrackerItem = styled.div`
@@ -38,4 +51,18 @@ export const AdrressTrackerItem = styled.div`
     justify-content: center;
     gap: 0.5rem;
     margin-left: 1.5rem;
+
+     /* MEDIA QUERIES */
+     @media screen and (max-width: 768px) {
+       margin-left: 0;
+       align-items: center;
+
+       span {
+            font-size: 0.6rem;
+       }
+
+       p {
+         font-size: 1.1rem;
+       }
+    }
 `
