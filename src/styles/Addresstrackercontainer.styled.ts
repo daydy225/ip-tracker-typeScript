@@ -62,7 +62,7 @@ export const AdrressTrackerItem = styled.div`
        }
 
        p {
-         font-size: 1.1rem;
+         font-size: 1.2rem;
        }
     }
 `

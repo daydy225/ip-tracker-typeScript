@@ -4,19 +4,16 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-image: url('../../src/assets/images/pattern-bg-desktop.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 2rem 0 8rem 0;
+    padding: 0 0 6rem 0;
+    gap: 1.3rem;
     
     h1 {
         color: white;
-        margin-bottom: 1.5rem;
+        margin-top: 1rem;
     }
 
     /* MEDIA QUERIES */
     @media screen and (max-width: 768px) {
-        background-image: url('../../src/assets/images/pattern-bg-mobile.png');
         
         h1 {
             font-size: 1.5rem;
@@ -28,6 +25,7 @@ export const SearchBarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.5rem;
     width: 35rem;
 
     input {
@@ -64,8 +62,20 @@ export const SearchBarContainer = styled.div`
         
         
         input::placeholder {
-            font-size: 0.725rem
+            font-size: 0.8rem
         }
         
+    }
+`
+
+export const Image = styled.img`
+    max-width: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: -5;
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 768px) {
+        width: 100%;
     }
 `
