@@ -8,9 +8,9 @@ export const Header:React.FC = () => {
   // state for mobile view 
   const [appWidth, setAppWidth] = useState<number>(window.innerWidth)
  
-  // 
+// get window width on resize from window browser  API
   useEffect(() => {
-    window.addEventListener('resize', () => {
+  window.addEventListener('resize', () => {
       setAppWidth(window.innerWidth)
     })
   , []})
@@ -21,7 +21,7 @@ export const Header:React.FC = () => {
 
   return (
     <StyledHeader>
-      {/* update header background image either on mobile or desktop viw */}
+      {/* update header background image either on mobile or desktop view */}
       {mobile ? <Image src={bgMobile} alt='Header background Mobile'/> :  <Image src={bg} alt="Header background" />}
         <h1>IP Address Tracker</h1> 
         <IpSearchBar />

@@ -1,8 +1,11 @@
 import React from 'react'
 import { Header } from './components/Header'
-import { MapContainer } from './components/MapContainer'
+import { Map } from './components/MapContainer'
 import GlobalStyle from './styles/GlobalStyle'
 import AppPoviders from './AppProviders'
+import 'leaflet/dist/leaflet.css';
+import { AddressTrackerContainer } from './components/AddressTrackerContainer'
+
 
 
 const  App:React.FC = () => {
@@ -11,7 +14,8 @@ const  App:React.FC = () => {
     <AppPoviders>
     <GlobalStyle />
     <Header />
-    <MapContainer />
+    <AddressTrackerContainer />
+    <Map />
     </AppPoviders>
   )
 }

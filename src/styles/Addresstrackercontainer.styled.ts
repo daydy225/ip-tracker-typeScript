@@ -6,11 +6,12 @@ export const StyledAddressTrackerContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 3rem 5rem 3rem 1rem ;
-    position: relative;
+    position: absolute;
     background-color: #fff;
-    top: -5rem;
+    z-index: 1000;
+    top: 10rem;
     width: 80vw;
-    margin: 0 auto;
+    left: 10%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);  
     border-radius: 0.7rem;
      
