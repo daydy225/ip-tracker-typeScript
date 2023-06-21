@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { IpSearchBar } from './IpSearchBar'
 import { StyledHeader, Image } from '../styles/Header.styled'
-import { SearchProps } from '../types'
 import bg from '../assets/images/pattern-bg-desktop.png'
 import bgMobile from '../assets/images/pattern-bg-mobile.png'
 
-export const Header:React.FC<SearchProps> = ({search, handleSearch, handleOnclick}) => {
+export const Header:React.FC = () => {
   // state for mobile view 
   const [appWidth, setAppWidth] = useState<number>(window.innerWidth)
  
@@ -25,7 +24,7 @@ export const Header:React.FC<SearchProps> = ({search, handleSearch, handleOnclic
       {/* update header background image either on mobile or desktop viw */}
       {mobile ? <Image src={bgMobile} alt='Header background Mobile'/> :  <Image src={bg} alt="Header background" />}
         <h1>IP Address Tracker</h1> 
-        <IpSearchBar search={search} handleSearch={handleSearch} handleOnclick={handleOnclick} />
+        <IpSearchBar />
     </StyledHeader>
   )
 }
