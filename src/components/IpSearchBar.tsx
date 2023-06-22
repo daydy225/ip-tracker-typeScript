@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import {FaChevronRight} from 'react-icons/fa'
 import { SearchBarContainer } from '../styles/Header.styled'
-import { SearchContext } from '../context/SearchContext'
+import { SearchContext } from '../context/Contexts'
 
 export const IpSearchBar:React.FC = () => {
     const {search, setSearch} = useContext(SearchContext)
