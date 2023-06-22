@@ -1,16 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
+import { LocationData } from "../types";
  
-
+ 
   
-  export const useGeolocation = () => {
+
+
+export const useGeolocation = () => {
     const [ipAddress, setIpAddress] = useState('');
-    const [locationData, setLocationData] = useState(null);
+    const [locationData, setLocationData] = useState<LocationData | null>(null);
   
     const getIpAddress = useCallback(async () => {
       try {
         const res = await fetch('https://api.ipify.org?format=json');
         const data = await res.json();
-        console.log('data ip address', data.ip);
         setIpAddress(data.ip);
       } catch (error) {
         console.log('error', error);
@@ -19,9 +21,8 @@ import { useCallback, useEffect, useState } from "react";
   
     const getIpLocationData = useCallback(async () => {
       try {
-        const res = await fetch(`http://api.ipstack.com/${ipAddress}?access_key=1201fab25755e3e16ccabeeb6272fa2d`);
+        const res = await fetch(`http://ip-api.com/json/${ipAddress}?fields=33612540`);
         const data = await res.json();
-        console.log('data', data);
         setLocationData(data);
       } catch (error) {
         console.log('error', error);

@@ -1,36 +1,45 @@
 import React from 'react'
 import { StyledAddressTrackerContainer, Divider, AdrressTrackerItem } from '../styles/Addresstrackercontainer.styled'
+import { useGeolocation } from '../hooks/useGeolocation'
 
 export const AddressTrackerContainer:React.FC = () => {
+  
+  const {locationData} = useGeolocation()
+  if(!locationData) return null
+
+  const {query, city, region, zip, offset, isp} = locationData
+
+
   return (
     <StyledAddressTrackerContainer>
        <div>
         <AdrressTrackerItem >
         <span>ip address</span>
-        <p>192.212.174.101</p>
+        <p>{query}</p>
         </AdrressTrackerItem> 
       </div>
       <div>
         <Divider /> 
         <AdrressTrackerItem>
         <span>location</span>
-        <p>Brooklyn, NY 1001</p>
+        <p>{city}, {region} {`${zip}` || ''}</p>
         </AdrressTrackerItem>
       </div>
       <div>
         <Divider />
         <AdrressTrackerItem>
         <span>timezone</span>
-        <p>UTC -05:00</p>
+        <p>UTC {`${offset?.toFixed(2)}`}</p>
         </AdrressTrackerItem>
       </div>
       <div>
         <Divider />
         <AdrressTrackerItem>
         <span>isp</span>
-        <p>SpaceX Starlink</p>
+        <p>{isp}</p>
         </AdrressTrackerItem>
       </div>
     </StyledAddressTrackerContainer>
   )
 }
+

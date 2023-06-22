@@ -7,7 +7,8 @@ import { LatLngExpression } from 'leaflet'
 
 const AppProviders:React.FC<{ children:ReactNode }> = ({children}) => {
   const [search, setSearch] = useState<string>('')
-  const [position, setPosition] = useState<LatLngExpression>([51.505, -0.09])
+  const [position, setPosition] = useState<LatLngExpression>([0,0])
+  
  
 
   

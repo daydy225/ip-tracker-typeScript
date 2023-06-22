@@ -32,3 +32,17 @@ export const PositionContext = createContext<PositionContextType>(
     setPosition: () => {}
   }
 )
+
+//  location data type
+export interface LocationData {
+  status: string;
+  region?: string;
+  regionName?: string;
+  city?: string;
+  zip?: string;
+  lat?: number;
+  lon?: number;
+  offset?: number;
+  isp?: string;
+  query?: string;
+}

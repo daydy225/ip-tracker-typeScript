@@ -1,8 +1,9 @@
 
-import React, {useContext}  from 'react'
+import React  from 'react'
 import { MapContainer, TileLayer,  } from 'react-leaflet';
 import { LocationMarker } from './LocationMarker';
-import { PositionContext } from '../context/Contexts';
+import { useGeolocation } from '../hooks/useGeolocation';
+import { LatLngExpression } from 'leaflet';
 
 // const center = [51.505, -0.09]
 // const zoom = 13
@@ -12,15 +13,20 @@ import { PositionContext } from '../context/Contexts';
 
 
 export const Map:React.FC = () => {
-  const {position}  = useContext(PositionContext)
-  
+  // const {position}  = useContext(PositionContext)
+const {locationData} = useGeolocation()
+ if(!locationData) return null
  
+ const {lat, lon} = locationData
+
+  const position:LatLngExpression = [lat || 0, lon || 0]
+
 
   return (
      <MapContainer
       center={position} // Set the initial map center coordinates
       zoom={13} // Set the initial zoom level
-      scrollWheelZoom={false} //disable scroll zooming on the map
+      scrollWheelZoom={true} //disable scroll zooming on the map
       style={{ height: '100vh', width: '100%', }} // Set the map container size
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
