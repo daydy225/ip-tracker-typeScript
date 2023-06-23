@@ -1,25 +1,33 @@
 import { useState, useEffect, useCallback } from "react";
 import { LocationData } from "../types";
-import dns from 'dns';
-import { promisify } from 'util'
+// import dns from 'dns';
+// import { promisify } from 'util'
 // custom hook to get the user Location IP Address entered in the search bar
 
-export const useLocationIpAddress = (ip: string, domain: string) => {
+export const useLocationIpAddress = (domain: string) => {
     const [ipLocationData, setIpLocationData] = useState<LocationData | null>(null);
-    const [ipAddress, setIpAddress] = useState('');
-    if (ip !== undefined && ip !== '') {
+    const [ipAddress, setIpAddress] = useState<string>('');
+    const isDomainIpAdress = domain.split('.').length === 4
+    // const domainName = !isDomainIpAdress ? domain : '';
+    const ip = isDomainIpAdress ? domain : '';
+
+    if (ip  !== '') {
         setIpAddress(ip);
-    } else if (domain !== undefined && domain !== '') {
-      (async () => {
-        try {
-          const ipAddress = await getIpAddress(domain);
-          console.log(`IP address for ${domain}: ${ipAddress}`);
-          setIpAddress(ipAddress);
-        } catch (err) {
-          console.error(err);
-        }
-      })();
     }
+  
+  
+    // else if (domainName !== '') {
+    //   (async () => {
+    //     try {
+    //       const ipAddress = await getIpAddress(domain);
+    //       console.log(`IP address for ${domain}: ${ipAddress}`);
+    //       setIpAddress(ipAddress);
+    //     } catch (err) {
+    //       console.error(err);
+    //     }
+    //   })();
+    // }
+
    const searchLocation = useCallback(async () => {
         try {
              const res = await fetch(`http://ip-api.com/json/${ipAddress}?fields=33612540`);
@@ -37,29 +45,29 @@ export const useLocationIpAddress = (ip: string, domain: string) => {
         searchLocation();
     }, [searchLocation]);
 
-    return { ipLocationData };
+    return  ipLocationData ;
 }
 
 // function to get the ip address from the domain name
 
-const resolve4Async = promisify(dns.resolve4);
+// const resolve4Async = promisify(dns.resolve4);
 
-const getIpAddress = async (domain: string): Promise<string> => {
-  try {
-    const addresses = await resolve4Async(domain);
-    return addresses[0];
-  } catch (err) {
-    throw new Error(`Error converting domain to IP address: ${err}`);
-  }
-};
+// const getIpAddress = async (domain: string): Promise<string> => {
+//   try {
+//     const addresses = await resolve4Async(domain);
+//     return addresses[0];
+//   } catch (err) {
+//     throw new Error(`Error converting domain to IP address: ${err}`);
+//   }
+// };
   
   // Example usage
-  const domain = 'example.com';
-  (async () => {
-    try {
-      const ipAddress = await getIpAddress(domain);
-      console.log(`IP address for ${domain}: ${ipAddress}`);
-    } catch (err) {
-      console.error(err);
-    }
-  })();
+  // const domain = 'example.com';
+  // (async () => {
+  //   try {
+  //     const ipAddress = await getIpAddress(domain);
+  //     console.log(`IP address for ${domain}: ${ipAddress}`);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // })();

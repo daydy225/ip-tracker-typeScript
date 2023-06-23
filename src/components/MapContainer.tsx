@@ -1,12 +1,13 @@
 
-import React  from 'react'
+import React from 'react'
 import { MapContainer, TileLayer,  } from 'react-leaflet';
 import { LocationMarker } from './LocationMarker';
 import { useGeolocation } from '../hooks/useGeolocation';
 import { LatLngExpression } from 'leaflet';
 
-// const center = [51.505, -0.09]
-// const zoom = 13
+
+
+
 
 
 
@@ -14,12 +15,13 @@ import { LatLngExpression } from 'leaflet';
 
 export const Map:React.FC = () => {
   // const {position}  = useContext(PositionContext)
-const {locationData} = useGeolocation()
+  const {locationData} = useGeolocation()
  if(!locationData) return null
  
  const {lat, lon} = locationData
 
-  const position:LatLngExpression = [lat || 0, lon || 0]
+ const position:LatLngExpression = [lat || 0, lon || 0]
+ 
 
 
   return (
@@ -27,34 +29,13 @@ const {locationData} = useGeolocation()
       center={position} // Set the initial map center coordinates
       zoom={13} // Set the initial zoom level
       scrollWheelZoom={true} //disable scroll zooming on the map
-      style={{ height: '100vh', width: '100%', }} // Set the map container size
+      style={{ height: '80vh', width: '100%', }} // Set the map container size
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-    <LocationMarker position={position}/>
+    <LocationMarker initialPosition={position}/>
     </MapContainer>
   )
 }
 
 
-
-// const LocationMarker = () => {
-//   const [position, setPosition] = useState<LatLngExpression | null >(null)
-//   const map = useMapEvents({
-//     click: () => {
-//       map.locate()
-//     },
-
-//     locationfound: (e: any) => {
-//       setPosition(e.latlng)
-//       console.log('location', e.latlng)
-//       map.flyTo(e.latlng, map.getZoom())
-//     }
-//   })
-
-//   return position === null ? null : (
-//     <Marker position={position}>
-//       <Popup>You are here</Popup>
-//       <Tooltip>Tooltip for Marker</Tooltip>
-//     </Marker>
-//   )
-// }
+  

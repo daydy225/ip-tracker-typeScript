@@ -5,10 +5,14 @@ import { LocationData } from "../types";
   
 
 
-export const useGeolocation = () => {
+export const useGeolocation = (ip?: string) => {
     const [ipAddress, setIpAddress] = useState('');
     const [locationData, setLocationData] = useState<LocationData | null>(null);
-  
+    
+    if (ip  !== '' && ip !== undefined) {
+        setIpAddress(ip);
+    }
+
     const getIpAddress = useCallback(async () => {
       try {
         const res = await fetch('https://api.ipify.org?format=json');
