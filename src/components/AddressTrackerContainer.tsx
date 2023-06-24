@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyledAddressTrackerContainer, Divider, AdrressTrackerItem } from '../styles/Addresstrackercontainer.styled'
 import { useGeolocation } from '../hooks/useGeolocation'
+import { SearchContext } from '../context/Contexts'
+import { getOffset } from '../utils/get_offset'
 
 export const AddressTrackerContainer:React.FC = () => {
   
-  const {locationData} = useGeolocation()
+  const {search} = useContext(SearchContext)
+
+  const {locationData} = useGeolocation(search)
   if(!locationData) return null
 
-  const {query, city, region, zip, offset, isp} = locationData
+  const {query, city, region, zip, timezone, isp} = locationData
 
+  const offset = getOffset(timezone || 'UTC')
 
   return (
     <StyledAddressTrackerContainer>
@@ -29,7 +34,7 @@ export const AddressTrackerContainer:React.FC = () => {
         <Divider />
         <AdrressTrackerItem>
         <span>timezone</span>
-        <p>UTC {`${offset?.toFixed(2)}`}</p>
+        <p>{`${offset}`}</p>
         </AdrressTrackerItem>
       </div>
       <div>

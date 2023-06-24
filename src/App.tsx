@@ -9,7 +9,7 @@ import { AddressTrackerContainer } from './components/AddressTrackerContainer'
 
 
 const  App:React.FC = () => {
-
+ 
   return (
     <AppPoviders>
     <GlobalStyle />

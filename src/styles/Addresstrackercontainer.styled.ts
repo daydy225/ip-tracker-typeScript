@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 export const StyledAddressTrackerContainer = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-around;
     padding: 3rem 5rem 3rem 1rem ;
     position: absolute;
     background-color: #fff;
@@ -22,7 +22,6 @@ export const StyledAddressTrackerContainer = styled.div`
 
     & > div {
         display: flex;
-
     }
     
  

@@ -1,5 +1,3 @@
-import { LatLngExpression } from "leaflet"
-import { createContext } from "react"
 
 // search context type
 export interface SearchProps{
@@ -16,33 +14,35 @@ export type SearchContextType = {
   }
 
   //  position context type
-export type PositionContextType = {
-  position:LatLngExpression,
-  setPosition:React.Dispatch<React.SetStateAction<LatLngExpression>>
-}
+// export type PositionContextType = {
+//   position:LatLngExpression,
+//   setPosition:React.Dispatch<React.SetStateAction<LatLngExpression>>
+// }
 
 
 // position context
 
 
 
-export const PositionContext = createContext<PositionContextType>(
-  {
-    position:[0,0],
-    setPosition: () => {}
-  }
-)
+// export const PositionContext = createContext<PositionContextType>(
+//   {
+//     position:[0,0],
+//     setPosition: () => {}
+//   }
+// )
 
 //  location data type
 export interface LocationData {
   status: string;
+  country?: string;
+  countryCode?: string;
   region?: string;
   regionName?: string;
   city?: string;
   zip?: string;
   lat?: number;
   lon?: number;
-  offset?: number;
+  timezone?: string;
   isp?: string;
   query?: string;
 }

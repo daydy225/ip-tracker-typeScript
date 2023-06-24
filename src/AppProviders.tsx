@@ -1,16 +1,12 @@
 import React, {ReactNode, useState} from 'react'
-import { PositionContext, SearchContext } from './context/Contexts'
-import { LatLngExpression } from 'leaflet'
-
+import { SearchContext } from './context/Contexts'
 
 
 
 const AppProviders:React.FC<{ children:ReactNode }> = ({children}) => {
   const [search, setSearch] = useState<string>('')
-  const [position, setPosition] = useState<LatLngExpression>([0,0])
+  // const [position, setPosition] = useState<LatLngExpression>([0,0])
   
- 
-
   
   return (
     <SearchContext.Provider value={
@@ -19,15 +15,9 @@ const AppProviders:React.FC<{ children:ReactNode }> = ({children}) => {
         setSearch
       }
     }>
-     <PositionContext.Provider value={
-      {
-        position,
-        setPosition,
-      }
-     }>
+   
 
     {children}
-     </PositionContext.Provider>
     </SearchContext.Provider>
   )
 }
