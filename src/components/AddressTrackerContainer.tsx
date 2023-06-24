@@ -22,9 +22,10 @@ export const AddressTrackerContainer:React.FC = () => {
         <span>ip address</span>
         <p>{query}</p>
         </AdrressTrackerItem> 
+        <Divider /> 
       </div>
       <div>
-        <Divider /> 
+       
         <AdrressTrackerItem>
         <span>location</span>
         <p>{city}, {region} {`${zip}` || ''}</p>

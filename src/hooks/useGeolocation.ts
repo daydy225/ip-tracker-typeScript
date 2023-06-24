@@ -50,7 +50,6 @@ export const useGeolocation = (ip?:string) => {
         if (finalIp) {
           const res = await fetch(`http://ip-api.com/json/${targetIp}?fields=58367`);
         const data = await res.json();
-        console.log(data);
         setLocationData(data);
         }
       } catch (error) {

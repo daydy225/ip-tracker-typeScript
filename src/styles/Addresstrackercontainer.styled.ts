@@ -22,6 +22,9 @@ export const StyledAddressTrackerContainer = styled.div`
 
     & > div {
         display: flex;
+        align-items: flex-start;
+        width: 100%;
+    justify-content: center;
     }
     
  
@@ -30,11 +33,10 @@ export const StyledAddressTrackerContainer = styled.div`
         flex-direction: column;
         gap:  1rem;
         padding: 1.5rem 0;
-       
     }
 `
 export const Divider = styled.div`
-     height: 4rem;
+     height: 6rem;
      width: 1px;
      background-color: lightgray;
      
@@ -49,13 +51,29 @@ export const AdrressTrackerItem = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 0.5rem;
-    margin-left: 1.5rem;
+    /* gap: 0.5rem; */
+
+
+    &:not(:nth-of-type(1)) {
+        margin-left: 1.5rem;
+    }
+    &:first-of-type {
+        margin-right: 1.5rem;
+    }
 
      /* MEDIA QUERIES */
      @media screen and (max-width: 768px) {
        margin-left: 0;
        align-items: center;
+       justify-content: center;
+       gap: 0.3rem;
+
+       &:not(:nth-of-type(1)) {
+        margin-left: 0;
+       }
+      &:first-of-type {
+        margin-right: 0;
+      }
 
        span {
             font-size: 0.6rem;
