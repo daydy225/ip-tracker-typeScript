@@ -1,4 +1,4 @@
-import { abbreviationTimeObj } from "./convert_standardTime_to_utc";
+import { abbreviationTimeObj } from "./abbreviation_time_obj";
 
 // get timezone UTC +OO from string like Australia/Sydney
 export const getOffset = (timezone: string) => {
