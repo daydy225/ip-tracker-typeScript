@@ -13,36 +13,20 @@ export type SearchContextType = {
     setSearch:React.Dispatch<React.SetStateAction<string>>
   }
 
-  //  position context type
-// export type PositionContextType = {
-//   position:LatLngExpression,
-//   setPosition:React.Dispatch<React.SetStateAction<LatLngExpression>>
-// }
 
-
-// position context
-
-
-
-// export const PositionContext = createContext<PositionContextType>(
-//   {
-//     position:[0,0],
-//     setPosition: () => {}
-//   }
-// )
 
 //  location data type
 export interface LocationData {
-  status: string;
-  country?: string;
-  countryCode?: string;
-  region?: string;
-  regionName?: string;
-  city?: string;
-  zip?: string;
-  lat?: number;
-  lon?: number;
-  timezone?: string;
-  isp?: string;
-  query?: string;
+    ip: string;
+    location: {
+      country: string;
+      region: string;
+      city: string;
+      lat: number;
+      lng: number;
+      postalCode: string;
+      timezone: string;
+    },
+    isp: string;
+
 }

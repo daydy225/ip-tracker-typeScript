@@ -15,7 +15,7 @@ export const IpSearchBar:React.FC = () => {
     }
   
     // handleOnclick function
-    const handleOnclick = () => {
+    const handleClick = () => {
       if(inputValue === '') return alert('Please enter a valid IP address or domain')
       if(inputValue === 'localhost') return alert('Please enter a valid IP address or domain')
       if(inputValue === undefined) return alert('Please enter a valid IP address or domain')
@@ -28,11 +28,16 @@ export const IpSearchBar:React.FC = () => {
       setSearch(inputValue.trim())
       setInputValue('')
     }
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        handleClick()
+      }
+    }
 
   return (
     <SearchBarContainer>
-        <input type="text" value={inputValue}  onChange={handleSearch} placeholder="Search for any IP address or domain" />
-        <button onClick={handleOnclick}><FaChevronRight /></button>
+        <input type="text" value={inputValue}  onChange={handleSearch} placeholder="Search for any IP address or domain"  onKeyDown={handleKeyPress}/>
+        <button onClick={handleClick} ><FaChevronRight /></button>
     </SearchBarContainer>
   )
 }

@@ -52,10 +52,9 @@ Users should be able to:
 - [TypeScript](https://www.typescriptlang.org/) - For types
 - [React-leaflet](https://react-leaflet.js.org/) - For map
 - [Leaflet](https://leafletjs.com/) - For map
-- [IP Geolocation API by IPify](https://geo.ipify.org/) - For IP address
+- [IP Geolocation API by IPify](https://geo.ipify.org/) - For IP address and location data
 - [Google Dns](https://dns.google/resolve?name=${domainName}) _ For domain name into IP address
 - [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - For fetching data
-- [API API ](http://ip-api.com/json/${ipAddress}) - For IP address into location data
 - [React-Icons](https://react-icons.github.io/react-icons/) - For icons
 - [React context API](https://reactjs.org/docs/context.html) - For state management
 - [Styled Components](https://styled-components.com/) - For styles
@@ -67,7 +66,7 @@ In this challenge I learned a lot about  react, how to fetch data using fetch ap
 I learned how to use react-leaflet and leaflet to display map and marker on the map.
 Use react context api in typescript to manage state, use google dns to convert domain name into IP address, also IP Geolocation API by IPify to get IP and get location data from IP.
 On top of that I feel more comfortable with typescript and I'm able to use it in my future projects.
-The last but not the least is a function to get timezone offset from string like 'Australia/sydney' to a string 'UTC +00:00' and convert all abbreviation time in their corresponfing format int UTC.
+
 
 
 To see how some code snippets you could keep, see below:
@@ -140,7 +139,7 @@ export const useGeolocation = (ip?:string) => {
         const finalIp = targetIp && targetIp.split('.').length !== 4 ? await convertToIpAddress(targetIp) : targetIp;
 
         if (finalIp) {
-          const res = await fetch(`http://ip-api.com/json/${targetIp}?fields=58367`);
+           const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${finalIp}`);
         const data = await res.json();
         setLocationData(data);
         }
@@ -164,27 +163,7 @@ export const useGeolocation = (ip?:string) => {
 
 ```
 
-```ts
-// the function to get timezone offset from string like 'Australia/sydney' to a string 'UTC +00:00' and convert all abbreviation time in their corresponfing format int UTC.
 
-import { abbreviationTimeObj } from "./abbreviation_time_obj";
-
-// get timezone UTC +OO from string like Australia/Sydney
-export const getOffset = (timezone: string) => {
-    const now = new Date();
-    const offset = now.toLocaleTimeString('en', { timeZone: timezone, timeZoneName: 'short' }).split(' ')[2];
-    const utcOffset = abbreviationTimeObj[offset];
-
-  if (utcOffset) {
-    return `UTC ${utcOffset}`;
-  } else {
-    console.log(offset);
-    return `UTC ${offset}`;
-  }
-  };
-```
-
-```ts
 export const abbreviationTimeObj:Record<string, string> =  {
         ACST: '+09:30',
         ACT: '-05:00',

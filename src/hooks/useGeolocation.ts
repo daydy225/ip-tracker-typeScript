@@ -39,7 +39,7 @@ export const useGeolocation = (ip?:string) => {
       throw new Error('Failed to convert domain name to IP address');
     }
   }, []);
-
+ 
   
     //  get location data from ip address
     const getIpLocationData = useCallback(async () => {
@@ -48,8 +48,9 @@ export const useGeolocation = (ip?:string) => {
         const finalIp = targetIp && targetIp.split('.').length !== 4 ? await convertToIpAddress(targetIp) : targetIp;
 
         if (finalIp) {
-          const res = await fetch(`http://ip-api.com/json/${targetIp}?fields=58367`);
+          const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY}&ipAddress=${finalIp}`);
         const data = await res.json();
+        console.log('location data',data);
         setLocationData(data);
         }
       } catch (error) {

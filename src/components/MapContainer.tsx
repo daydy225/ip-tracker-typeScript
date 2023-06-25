@@ -20,10 +20,10 @@ const [infoTooltip, setInfoTooltip] = useState<string>('')
  
   useEffect(() => {
     if (locationData) {
-      const { lat, lon } = locationData;
-      setPosition([lat || 0, lon || 0]);
+      const { location: {lat, lng} } = locationData;
+      setPosition([lat || 0, lng || 0]);
       // info tooltip is set to the isp name and country code
-      setInfoTooltip(`${locationData.isp?.split(' ')[0]}, ${locationData.countryCode}`)
+      setInfoTooltip(`${locationData.isp?.split(' ')[0]}, ${locationData.location?.country}`)
     }
   }, [locationData]);
  
