@@ -42,7 +42,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [IP Address tracker typscript](https://github.com/daydy225/ip-tracker-typeScript)
-- Live Site URL: [IP-address-tracker-225.netlify.app](ip-address-tracker-225.netlify.app)
+- Live Site URL: [IP-address-tracker-225.netlify.app](https://ip-address-tracker-225.netlify.app/)
 
 
 ### Built with
